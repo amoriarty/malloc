@@ -49,6 +49,7 @@ ADD_EXECUTABLE(main tests/main.c)
 ADD_EXECUTABLE(unit tests/main_tests.c)
 ADD_EXECUTABLE(show tests/show_test.c)
 ADD_EXECUTABLE(test3 tests/test3.c)
+ADD_EXECUTABLE(test1 tests/test1.c)
 
 ADD_LIBRARY(malloc SHARED ${LIB_FILES})
 
@@ -58,3 +59,4 @@ TARGET_LINK_LIBRARIES(malloc ${PROJECT_SOURCE_DIR}/libft/libft.a)
 TARGET_LINK_LIBRARIES(main malloc)
 TARGET_LINK_LIBRARIES(show malloc)
 TARGET_LINK_LIBRARIES(test3 malloc)
+TARGET_LINK_LIBRARIES(test1 malloc)

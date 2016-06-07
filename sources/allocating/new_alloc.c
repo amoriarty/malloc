@@ -4,13 +4,22 @@
 
 #include "malloc.h"
 
+static size_t 				get_size(t_type type, size_t size)
+{
+	if (type == TINY)
+		return (PRELOAD_ITERATE * TINY_SIZE);
+	else if (type == SMALL)
+		return (PRELOAD_ITERATE * SMALL_SIZE);
+	return (size);
+}
+
 static t_heap				*init_heap(t_heap *heap, t_type type, size_t size)
 {
 	t_heap					*tmp;
 
-	if (!(tmp = (t_heap *)ft_malloc(size)))
+	if (!(tmp = (t_heap *)ft_malloc(size + getpagesize())))
 		return (NULL);
-	tmp = new_heap(tmp, FALSE, size, type);
+	tmp = new_heap(tmp, FALSE, get_size(type, size), type);
 	push_heap(heap, tmp);
 	return (tmp);
 }
