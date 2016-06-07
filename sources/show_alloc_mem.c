@@ -1,0 +1,61 @@
+//
+// Created by Alexandre LEGENT on 07/06/2016.
+//
+
+#include "malloc.h"
+
+static void				print_type(t_type type)
+{
+	if (type == TINY)
+		ft_putstr("TINY");
+	else if (type == SMALL)
+		ft_putstr("SMALL");
+	else if (type == LARGE)
+		ft_putstr("LARGE");
+}
+
+static void 			print_block(t_block *block)
+{
+	print_addr(block->ptr);
+	ft_putstr(" - ");
+	print_addr(block->ptr + block->size);
+	ft_putstr(" : ");
+	putnbr((int)block->size);
+	ft_putendl(" octets");
+}
+
+static void				print_heap(t_heap *heap)
+{
+	print_type(heap->type);
+	ft_putstr(": ");
+	print_addr((void *)heap);
+	ft_putchar(EOL);
+}
+
+void 					show_alloc_mem(void)
+{
+	t_heap				*sglt;
+	t_block				*block;
+	size_t 				total;
+
+	total = 0;
+	sglt = singleton();
+	while (sglt)
+	{
+		print_heap(sglt);
+		block = sglt->block;
+		while (block)
+		{
+			if (block->free == FALSE)
+			{
+				print_block(block);
+				total += block->size;
+			}
+			block = block->next;
+		}
+		sglt = sglt->next;
+	}
+	ft_putstr("Total : ");
+	putnbr((int)total);
+	ft_putendl(" octets");
+}
