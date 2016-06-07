@@ -40,6 +40,7 @@ void							*realloc(void *ptr, size_t size)
 		else if ((new = malloc(size)))
 		{
 			memcpy(new, ptr, size);
+			free(ptr);
 			return (new);
 		}
 	}
