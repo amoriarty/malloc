@@ -1,12 +1,20 @@
-//
-// Created by Alexandre LEGENT on 03/06/2016.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   realloc.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/06/23 11:01:03 by alegent           #+#    #+#             */
+/*   Updated: 2016/06/23 12:04:51 by alegent          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "malloc.h"
 
-static void		*memcpy(void *dst, const void *src, size_t n)
+static void						*memcpy(void *dst, const void *src, size_t n)
 {
-	size_t		i;
+	size_t						i;
 
 	i = 0;
 	while (i < n)
@@ -28,9 +36,8 @@ void							*realloc(void *ptr, size_t size)
 		free(ptr);
 	else if ((block = find_by_ptr(ptr)))
 	{
-		size = ptr_align(size);
 		check_free_block(block);
-		if (size == block->size)
+		if ((size = ptr_align(size)) == block->size)
 			return (block->ptr);
 		else if (size < block->size)
 		{

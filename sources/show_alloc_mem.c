@@ -1,6 +1,14 @@
-//
-// Created by Alexandre LEGENT on 07/06/2016.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   show_alloc_mem.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/06/23 11:01:10 by alegent           #+#    #+#             */
+/*   Updated: 2016/06/23 11:22:06 by alegent          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "malloc.h"
 
@@ -14,7 +22,7 @@ static void				print_type(t_type type)
 		ft_putstr("LARGE");
 }
 
-static void 			print_block(t_block *block)
+static void				print_block(t_block *block)
 {
 	print_addr(block->ptr);
 	ft_putstr(" - ");
@@ -32,11 +40,11 @@ static void				print_heap(t_heap *heap)
 	ft_putchar(EOL);
 }
 
-void 					show_alloc_mem(void)
+void					show_alloc_mem(void)
 {
 	t_heap				*sglt;
 	t_block				*block;
-	size_t 				total;
+	size_t				total;
 
 	total = 0;
 	sglt = singleton();
