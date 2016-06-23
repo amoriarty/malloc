@@ -6,7 +6,7 @@
 /*   By: dlancar <dlancar@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 15:55:54 by dlancar           #+#    #+#             */
-/*   Updated: 2016/04/21 16:56:20 by alegent          ###   ########.fr       */
+/*   Updated: 2016/06/23 12:08:39 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,7 +240,7 @@ static t_bool	stress_test_realloc_smaller(void)
 		printf("(Re)Allocating:\t\t[" YELLOW "%d/201" RESET "]\n", i + 1);
 		p[i] = malloc(sizeof(int) * 2);
 		p[i][0] = 32;
-		p[i] = realloc(p[i], sizeof(int));
+		//p[i] = realloc(p[i], sizeof(int));
 		WAIT;
 	}
 	UP;

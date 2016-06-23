@@ -6,7 +6,7 @@
 /*   By: alegent <alegent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/23 11:01:03 by alegent           #+#    #+#             */
-/*   Updated: 2016/06/23 12:04:51 by alegent          ###   ########.fr       */
+/*   Updated: 2016/06/23 12:20:02 by alegent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void							*realloc(void *ptr, size_t size)
 
 	if (!ptr)
 		return (malloc(size));
-	if ((int)size <= 0)
+	if ((int)size < 0)
 		free(ptr);
 	else if ((block = find_by_ptr(ptr)))
 	{
